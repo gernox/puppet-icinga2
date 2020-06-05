@@ -2,5 +2,21 @@
 # See https://github.com/puppetlabs/puppetlabs_spec_helper#using-fixtures for details
 ---
 fixtures:
-  forge_modules:
-#     stdlib: "puppetlabs/stdlib"
+  repositories:
+    apt:
+      repo: 'https://github.com/puppetlabs/puppetlabs-apt.git'
+      ref: 'v7.4.1'
+    concat:
+      repo: 'https://github.com/puppetlabs/puppetlabs-concat.git'
+      ref: 'v6.2.0'
+    icinga2:
+      repo: 'https://github.com/Icinga/puppet-icinga2.git'
+      ref: 'v2.4.1'
+    icingaweb2:
+      repo: 'https://github.com/Icinga/puppet-icingaweb2.git'
+      ref: 'v2.3.1'
+    stdlib:
+      repo: 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
+      ref: 'v6.3.0'
+  symlinks:
+    profile: "#{source_dir}"

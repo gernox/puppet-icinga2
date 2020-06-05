@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Monitors the status of Gitlab instance
+# @param address
+
+RESPONSE_CODE=$(curl -sq -o /dev/null -w "%{http_code}" "$1")
+
+if [[ "${RESPONSE_CODE}" != "200" ]]; then
+  echo "UNKNOWN- ${RESPONSE_CODE}"
+  exit 3
+fi
+
+RESPONSE=$(curl -sq "$1")
+HEALTH_COUNT=$(echo ${RESPONSE} | jq '.[].status == "ok"' | grep 'true' | wc -l)
+
+if [[ "${HEALTH_COUNT}" -eq 6 ]]; then
+  echo "OK- Healthy GitLab components: ${HEALTH_COUNT} / 6"
+  exit 0
+else
+  echo "CRITICAL- Healthy GitLab components: ${HEALTH_COUNT} / 6"
+  exit 2
+fi

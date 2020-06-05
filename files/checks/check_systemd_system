@@ -1,0 +1,13 @@
+#!/bin/bash
+
+. /usr/lib/nagios/plugins/utils.sh
+
+systemctl --quiet is-system-running
+
+if [ $? -ne 0 ]; then
+    echo "ERROR: system degraded"
+    exit $STATE_CRITICAL
+fi
+
+echo "OK: system running"
+exit $STATE_OK

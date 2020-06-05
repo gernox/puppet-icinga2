@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+ICINGA_HOSTNAME="<%=@notification_slack_icinga_host %>"
+SLACK_WEBHOOK_URL="<%=@notification_slack_webhook_url %>"
+SLACK_CHANNEL="#<%=@notification_slack_channel %>"
+SLACK_BOTNAME="<%=@notification_slack_bot_name %>"
+
+#Set the message icon based on ICINGA host state
+if [ "$HOSTSTATE" = "DOWN" ]
+then
+    ICON=":bomb:"
+elif [ "$HOSTSTATE" = "UP" ]
+then
+    ICON=":white_check_mark:"
+elif [ "$HOSTSTATE" = "UNKNOWN" ]
+then
+    ICON=":question:"
+else
+    ICON=":white_medium_square:"
+fi
+
+#Send message to Slack
+PAYLOAD="payload={\"channel\": \"${SLACK_CHANNEL}\", \"username\": \"${SLACK_BOTNAME}\", \"text\": \"${ICON} HOST: <https://${ICINGA_HOSTNAME}/icingaweb2/monitoring/host/show?host=${HOSTNAME}|${HOSTDISPLAYNAME}> is ${HOSTSTATE} : \n${HOSTOUTPUT}\"}"
+
+curl --connect-timeout 30 --max-time 60 -s -S -X POST --data-urlencode "${PAYLOAD}" "${SLACK_WEBHOOK_URL}"

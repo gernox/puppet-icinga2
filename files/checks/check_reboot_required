@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Check if a reboot is required on the machine
+
+set -e;
+
+REBOOT_REQUIRED_PATH='/var/run/reboot-required'
+REBOOT_PKGS_PATH='/var/run/reboot-required.pkgs'
+
+if [ -f "$REBOOT_REQUIRED_PATH" ]; then
+    if [ -f "$REBOOT_PKGS_PATH" ]; then
+	echo 'Reboot required for the following packages:'
+	cat "$REBOOT_PKGS_PATH"
+    else
+	echo 'Reboot required'
+    fi
+    exit 1;
+fi
+
+echo "No reboot required";
+exit 0;
