@@ -22,10 +22,10 @@
 # @param http_port
 #
 class gernox_icinga2::icingaweb2 (
-  String $postgresql_version,
   String $db_user,
   String $db_password,
   String $db_name,
+  String $db_host,
   Integer $db_port,
 
   String $ido_db_user,
@@ -39,38 +39,11 @@ class gernox_icinga2::icingaweb2 (
   Boolean $manage_apache,
   Integer $http_port,
 ) {
-
-  contain ::gernox_docker
-
-  if !defined(Docker::Image["postgres:${postgresql_version}"]) {
-    ::docker::image { 'postgres':
-      ensure    => present,
-      image     => 'postgres',
-      image_tag => $postgresql_version,
-    }
-  }
-
-  ::docker::run { 'icingaweb2-postgres':
-    image                 => "postgres:${postgresql_version}",
-    volumes               => [
-      '/srv/docker/icingaweb2/postgresql/data:/var/lib/postgresql/data',
-    ],
-    health_check_interval => 30,
-    env                   => [
-      "POSTGRES_USER=${db_user}",
-      "POSTGRES_PASSWORD=${db_password}",
-      "POSTGRES_DB=${db_name}",
-    ],
-    ports                 => [
-      "${db_port}:5432",
-    ],
-  }
-
   class { '::icingaweb2':
     manage_repo   => false,
     import_schema => true,
     db_type       => 'pgsql',
-    db_host       => 'localhost',
+    db_host       => $db_host,
     db_port       => $db_port,
     db_username   => $db_user,
     db_password   => $db_password,
@@ -78,7 +51,7 @@ class gernox_icinga2::icingaweb2 (
 
   class { '::icingaweb2::module::monitoring':
     ido_type          => 'pgsql',
-    ido_host          => 'localhost',
+    ido_host          => $db_host,
     ido_port          => 0 + $ido_db_port,
     ido_db_username   => $ido_db_user,
     ido_db_name       => $ido_db_name,
@@ -122,5 +95,4 @@ class gernox_icinga2::icingaweb2 (
       notify  => Service['apache2'],
     }
   }
-
 }

@@ -5,12 +5,6 @@
 #
 # @param api_password
 #
-# @param db_user
-#
-# @param db_password
-#
-# @param db_name
-#
 # @param notification_group
 #
 # @param notification_email
@@ -30,11 +24,6 @@
 class gernox_icinga2::server (
   String $api_user,
   String $api_password,
-
-  String $db_user,
-  String $db_password,
-  String $db_name,
-  Integer $db_port,
 
   String $notification_group,
   String $notification_email,

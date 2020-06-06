@@ -15,6 +15,9 @@ fixtures:
     icingaweb2:
       repo: 'https://github.com/Icinga/puppet-icingaweb2.git'
       ref: 'v2.3.1'
+    postgresql:
+      repo: 'https://github.com/puppetlabs/puppetlabs-postgresql.git'
+      ref: 'v6.5.0'
     stdlib:
       repo: 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
       ref: 'v6.3.0'
