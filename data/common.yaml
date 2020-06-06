@@ -41,6 +41,8 @@ gernox_icinga2::server::notification_groups: {}
 
 gernox_icinga2::server::feature::ido_pgsql::user: icinga2
 gernox_icinga2::server::feature::ido_pgsql::database: icinga2
+gernox_icinga2::server::feature::ido_pgsql::host: localhost
+gernox_icinga2::server::feature::ido_pgsql::port: 5432
 
 gernox_icinga2::common::object::checkcommand::gernox_cmd_path: /gernox/monitoring-checks
 gernox_icinga2::common::object::checkcommand::nagios_cmd_path: /usr/lib/nagios/plugins
@@ -52,3 +54,14 @@ gernox_icinga2::common::object::checkcommand::custom_check_packages:
   - libconfig-json-perl
   - python-yaml
   - jq
+
+gernox_icinga2::icingaweb2::db_user: icingaweb2
+gernox_icinga2::icingaweb2::db_name: icingaweb2
+gernox_icinga2::icingaweb2::db_host: localhost
+gernox_icinga2::icingaweb2::db_port: 5432
+gernox_icinga2::icingaweb2::ido_db_user: "%{hiera('gernox_icinga2::server::feature::ido_pgsql::user')}"
+gernox_icinga2::icingaweb2::ido_db_name: "%{hiera('gernox_icinga2::server::feature::ido_pgsql::database')}"
+gernox_icinga2::icingaweb2::ido_db_host: "%{hiera('gernox_icinga2::server::feature::ido_pgsql::host')}"
+gernox_icinga2::icingaweb2::ido_db_port: "%{hiera('gernox_icinga2::server::feature::ido_pgsql::port')}"
+gernox_icinga2::icingaweb2::api_user: "%{hiera('gernox_icinga2::server::api_user')}"
+gernox_icinga2::icingaweb2::api_password: "%{hiera('gernox_icinga2::server::api_password')}"

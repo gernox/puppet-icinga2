@@ -31,13 +31,14 @@ class gernox_icinga2::icingaweb2 (
   String $ido_db_user,
   String $ido_db_password,
   String $ido_db_name,
+  String $ido_db_host,
   Variant[String, Integer] $ido_db_port,
 
   String $api_user,
   String $api_password,
 
-  Boolean $manage_apache,
-  Integer $http_port,
+  Boolean $manage_apache = false,
+  Integer $http_port     = 8080,
 ) {
   class { '::icingaweb2':
     manage_repo   => false,
