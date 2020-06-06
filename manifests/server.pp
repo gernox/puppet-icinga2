@@ -36,6 +36,11 @@ class gernox_icinga2::server (
   String $notification_slack_icinga_host = $::fqdn,
   Optional[String] $notification_slack_webhook_url = undef,
 ) {
+  File {
+    owner => 'nagios',
+    group => 'nagios',
+  }
+
   contain ::gernox_icinga2::common::install
   contain ::gernox_icinga2::server::install
 
