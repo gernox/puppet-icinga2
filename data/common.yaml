@@ -60,6 +60,7 @@ gernox_icinga2::icingaweb2::db_name: icingaweb2
 gernox_icinga2::icingaweb2::db_host: localhost
 gernox_icinga2::icingaweb2::db_port: 5432
 gernox_icinga2::icingaweb2::ido_db_user: "%{hiera('gernox_icinga2::server::feature::ido_pgsql::user')}"
+gernox_icinga2::icingaweb2::ido_db_password: "%{hiera('gernox_icinga2::server::feature::ido_pgsql::password')}"
 gernox_icinga2::icingaweb2::ido_db_name: "%{hiera('gernox_icinga2::server::feature::ido_pgsql::database')}"
 gernox_icinga2::icingaweb2::ido_db_host: "%{hiera('gernox_icinga2::server::feature::ido_pgsql::host')}"
 gernox_icinga2::icingaweb2::ido_db_port: "%{hiera('gernox_icinga2::server::feature::ido_pgsql::port')}"
