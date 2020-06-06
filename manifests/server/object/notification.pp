@@ -2,7 +2,7 @@
 #   Setting up the notification objects
 #
 class gernox_icinga2::server::object::notification (
-  String $notification_group,
+  String $notification_group = $gernox_icinga2::server::notification_group,
 ) {
   ::icinga2::object::notification { 'apply-mail-service-notification':
     import       => [ 'mail-service-notification' ],
