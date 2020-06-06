@@ -53,6 +53,7 @@ class gernox_icinga2::icingaweb2 (
     db_port       => $db_port,
     db_username   => $db_user,
     db_password   => $db_password,
+    require       => Postgresql::Server::Db[$db_name],
   }
 
   class { '::icingaweb2::module::monitoring':
