@@ -1,6 +1,6 @@
 class gernox_icinga2::server::object::notificationcommand (
   String $notification_slack_icinga_host = $::gernox_icinga2::server::notification_slack_icinga_host,
-  String $notification_slack_webhook_url = $::gernox_icinga2::server::notification_slack_webhook_url,
+  Optional[String] $notification_slack_webhook_url = $::gernox_icinga2::server::notification_slack_webhook_url,
   String $notification_slack_channel     = $::gernox_icinga2::server::notification_slack_channel,
   String $notification_slack_bot_name    = $::gernox_icinga2::server::notification_slack_bot_name,
 ) {

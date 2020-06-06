@@ -30,4 +30,11 @@ gernox_icinga2::vars:
 gernox_icinga2::parent_zone: ~
 gernox_icinga2::enable_email: false
 gernox_icinga2::enable_slack: false
-gernox_icinga2::apply_class: '::gernox_icinga2::common::object::apply'
+gernox_icinga2::apply_class: ::gernox_icinga2::common::object::apply
+
+gernox_icinga2::server::api_user: gernox-monitoring
+gernox_icinga2::server::notification_group: gernox-admin
+gernox_icinga2::server::notification_slack_channel: monitoring
+gernox_icinga2::server::notification_slack_bot_name: icinga2
+gernox_icinga2::server::notification_users: {}
+gernox_icinga2::server::notification_groups: {}

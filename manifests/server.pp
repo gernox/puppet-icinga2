@@ -27,7 +27,6 @@ class gernox_icinga2::server (
 
   String $notification_group,
   String $notification_email,
-  String $notification_slack_webhook_url,
   String $notification_slack_channel,
   String $notification_slack_bot_name,
 
@@ -35,6 +34,7 @@ class gernox_icinga2::server (
   Hash $notification_groups,
 
   String $notification_slack_icinga_host = $::fqdn,
+  Optional[String] $notification_slack_webhook_url = undef,
 ) {
   contain ::gernox_icinga2::common::install
   contain ::gernox_icinga2::server::install
