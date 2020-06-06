@@ -40,6 +40,11 @@ class gernox_icinga2::icingaweb2 (
   Boolean $manage_apache = false,
   Integer $http_port     = 8080,
 ) {
+  postgresql::server::db { $db_name:
+    user     => $db_user,
+    password => postgresql_password($db_user, $db_password),
+  }
+
   class { '::icingaweb2':
     manage_repo   => false,
     import_schema => true,
