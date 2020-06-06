@@ -35,11 +35,9 @@ class gernox_icinga2::client (
   # Parent zone
   # Ignore puppetdb during bootstrap
   $parent_nodes = $::settings::storeconfigs ? {
-    true    => query_resources(false,
-      ['and',
-        ['=', 'type', 'Class'],
-        ['=', 'title', 'gernox_icinga2'],
-        ['=', ['parameter', 'zone'], $parent_zone]]),
+    true    => puppetdb_query(
+      "resources { type = 'Class' and title = 'Gernox_icinga2' and parameters.zone = '${parent_zone}' }"
+    ),
     default => {}
   }
 
@@ -60,11 +58,9 @@ class gernox_icinga2::client (
   # Child zones
   # Ignore puppetdb during bootstrap
   $child_nodes = $::settings::storeconfigs ? {
-    true    => query_resources(false,
-      ['and',
-        ['=', 'type', 'Class'],
-        ['=', 'title', 'gernox_icinga2'],
-        ['=', ['parameter', 'parent_zone'], $zone]]),
+    true    => puppetdb_query(
+      "resources { type = 'Class' and title = 'Gernox_icinga2' and parameters.zone = '${zone}' }"
+    ),
     default => {}
   }
 

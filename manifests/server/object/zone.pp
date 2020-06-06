@@ -25,10 +25,9 @@ class gernox_icinga2::server::object::zone (
   # Child Zones
   # Ignore puppetdb during bootstrap
   $nodes = $::settings::storeconfigs ? {
-    true    => query_resources(false,
-      ['and',
-        ['=', 'type', 'Class'],
-        ['=', 'title', 'gernox_icinga2']]),
+    true    => puppetdb_query(
+      "resources { type = 'Class' and title = 'Gernox_icinga2' }"
+    ),
     default => {}
   }
 

@@ -2,8 +2,8 @@ class gernox_icinga2::server::object::host {
   # Ignore puppetdb during bootstrap
   $hosts = $::settings::storeconfigs ? {
     # collect all hosts that have been exported
-    true    => query_resources(false,
-      ['=', 'type', 'gernox_icinga2::Common::Object::Host']
+    true    => puppetdb_query(
+      "resources { type = 'Gernox_icinga2::Common::Object::Host' }"
     ),
     default => {}
   }

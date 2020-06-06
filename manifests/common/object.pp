@@ -30,11 +30,9 @@ class gernox_icinga2::common::object (
 
   # lint:ignore:variable_scope
   $ress_vars = $::settings::storeconfigs ? {
-    true    => query_resources(false,
-      ['and',
-        ['=', 'type', 'gernox_icinga2::Monitoring_parameters'],
-        ['=', 'certname', $fqdn],
-      ]),
+    true    => puppetdb_query(
+      "resources { type = 'Gernox_icinga2::Monitoring_parameters' and certname = '${fqdn}' }"
+    ),
     default => {}
   }
   # lint:endignore
