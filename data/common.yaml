@@ -38,3 +38,6 @@ gernox_icinga2::server::notification_slack_channel: monitoring
 gernox_icinga2::server::notification_slack_bot_name: icinga2
 gernox_icinga2::server::notification_users: {}
 gernox_icinga2::server::notification_groups: {}
+
+gernox_icinga2::server::feature::ido_pgsql::user: icinga2
+gernox_icinga2::server::feature::ido_pgsql::database: icinga2
