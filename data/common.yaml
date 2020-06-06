@@ -41,3 +41,14 @@ gernox_icinga2::server::notification_groups: {}
 
 gernox_icinga2::server::feature::ido_pgsql::user: icinga2
 gernox_icinga2::server::feature::ido_pgsql::database: icinga2
+
+gernox_icinga2::common::object::checkcommand::gernox_cmd_path: /gernox/monitoring-checks
+gernox_icinga2::common::object::checkcommand::nagios_cmd_path: /usr/lib/nagios/plugins
+
+gernox_icinga2::common::object::checkcommand::puppet_last_run_file: /opt/puppetlabs/puppet/last_run_summary.yaml
+gernox_icinga2::common::object::checkcommand::custom_check_packages:
+  - python-mysqldb
+  - python-psycopg2
+  - libconfig-json-perl
+  - python-yaml
+  - jq
