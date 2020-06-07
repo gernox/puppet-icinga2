@@ -11,7 +11,7 @@ class gernox_icinga2::server::object::dependency {
     $host_params = $host['parameters']
     $vars = $host_params['vars']
 
-    if $vars['parent'] != undef {
+    if ($vars['parent'] != undef) and defined(Icinga2::Object::Host[$vars['parent']]) {
       ::icinga2::object::dependency { "parent-${host['title']}":
         parent_host_name      => $vars['parent'],
         child_host_name       => $host['title'],
