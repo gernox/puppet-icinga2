@@ -41,6 +41,10 @@ class gernox_icinga2 (
   Optional[String] $parent_zone = undef,
 
 ) {
+  File {
+    owner => 'nagios',
+    group => 'nagios',
+  }
 
   contain "::gernox_icinga2::${type}"
 
