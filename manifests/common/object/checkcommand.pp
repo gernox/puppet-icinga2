@@ -57,7 +57,7 @@ class gernox_icinga2::common::object::checkcommand (
         order => '-1',
       },
     },
-    target    => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target    => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
   ::icinga2::object::checkcommand { 'rabbitmq_queuesize':
@@ -84,7 +84,7 @@ class gernox_icinga2::common::object::checkcommand (
         order => '-2',
       },
     },
-    target    => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target    => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
   ::icinga2::object::checkcommand { 'bareos_status':
@@ -132,7 +132,7 @@ class gernox_icinga2::common::object::checkcommand (
         order => '3',
       },
     },
-    target    => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target    => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
   ::icinga2::object::checkcommand { 'bareos_failed':
@@ -176,7 +176,7 @@ class gernox_icinga2::common::object::checkcommand (
         order => '3',
       },
     },
-    target    => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target    => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
   ::icinga2::object::checkcommand { 'gitlab_status':
@@ -187,7 +187,7 @@ class gernox_icinga2::common::object::checkcommand (
         value    => '$gitlab_health_url$',
       },
     },
-    target    => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target    => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
   ::icinga2::object::checkcommand { 'gernox_mailq':
@@ -203,7 +203,7 @@ class gernox_icinga2::common::object::checkcommand (
       'mailq_critical'   => '5',
       'mailq_mailserver' => 'postfix',
     },
-    target    => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target    => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
   ::icinga2::object::checkcommand { 'puppet_agent':
@@ -216,12 +216,12 @@ class gernox_icinga2::common::object::checkcommand (
         value => '172800', # 2 * 24h * 60min * 60sec
       },
     },
-    target    => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target    => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
   ::icinga2::object::checkcommand { 'reboot_required':
     command => ["${gernox_cmd_path}/check_reboot_required"],
-    target  => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target  => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
   ::icinga2::object::checkcommand { 'smart_status':
@@ -236,7 +236,7 @@ class gernox_icinga2::common::object::checkcommand (
         order => '-1',
       },
     },
-    target    => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target    => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
   ::icinga2::object::checkcommand { 'systemd_service':
@@ -247,7 +247,7 @@ class gernox_icinga2::common::object::checkcommand (
         value    => '$name$',
       }
     },
-    target    => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target    => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
   ::icinga2::object::checkcommand { 'check_systemd_system':
@@ -258,7 +258,7 @@ class gernox_icinga2::common::object::checkcommand (
         value    => '$name$',
       }
     },
-    target    => "${::icinga2::globals::conf_dir}/zones.d/global-templates/checkcommands.conf",
+    target    => "${::icinga2::globals::conf_dir}/conf.d/checkcommands.conf",
   }
 
 }

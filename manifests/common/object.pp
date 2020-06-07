@@ -5,6 +5,7 @@
 #
 class gernox_icinga2::common::object (
   String $fqdn = $::fqdn,
+  String $type = $gernox_icinga2::type,
 ) {
   contain ::gernox_icinga2::common::object::checkcommand
   contain ::gernox_icinga2::common::object::template
@@ -77,15 +78,18 @@ class gernox_icinga2::common::object (
     vars         => $vars,
   }
 
-  ::icinga2::object::zone { 'global-templates':
-    global => true,
-  }
+  # TODO can probably be removed?
+  if ($type == 'server') {
+    ::icinga2::object::zone { 'global-templates':
+      global => true,
+    }
 
-  file { "${::icinga2::globals::conf_dir}/zones.d/global-templates":
-    ensure  => directory,
-    owner   => nagios,
-    group   => nagios,
-    recurse => true,
-    purge   => true,
+    file { "${::icinga2::globals::conf_dir}/zones.d/global-templates":
+      ensure  => directory,
+      owner   => nagios,
+      group   => nagios,
+      recurse => true,
+      purge   => true,
+    }
   }
 }

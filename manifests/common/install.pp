@@ -3,6 +3,7 @@
 #
 class gernox_icinga2::common::install (
   String $zone = $gernox_icinga2::zone,
+  String $type = $gernox_icinga2::type,
 ) {
   # Plugin packages to install
   $plugin_packages = [
@@ -54,11 +55,12 @@ class gernox_icinga2::common::install (
   }
 
   file { "${::icinga2::globals::conf_dir}/zones.d":
-    ensure  => directory,
+    ensure  => if $type == 'server' { 'directory' } else { 'absent' },
     owner   => nagios,
     group   => nagios,
     recurse => true,
     purge   => true,
+    force   => true,
     require => File[$::icinga2::globals::conf_dir],
   }
 
