@@ -81,3 +81,9 @@ gernox_icinga2::icingaweb2::ido_db_host: "%{hiera('gernox_icinga2::server::featu
 gernox_icinga2::icingaweb2::ido_db_port: "%{hiera('gernox_icinga2::server::feature::ido_pgsql::port')}"
 gernox_icinga2::icingaweb2::api_user: "%{hiera('gernox_icinga2::server::api_user')}"
 gernox_icinga2::icingaweb2::api_password: "%{hiera('gernox_icinga2::server::api_password')}"
+
+lookup_options:
+  gernox_icinga2::vars:
+    merge:
+      strategy: deep
+      merge_hash_arrays: true
