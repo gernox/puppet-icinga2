@@ -6,6 +6,21 @@ gernox_icinga2::api_host: "%{facts.fqdn}"
 gernox_icinga2::api_port: 5665
 gernox_icinga2::vars:
   services:
+    ntp:
+      address: de.pool.ntp.org
+    swap:
+      wfree: 70
+      cfree: 50
+    load:
+      wload1: 3
+      wload5: 4
+      wload15: 5
+      cload1: 5
+      cload5: 6
+      cload15: 7
+    users:
+      warning: 3
+      critical: 5
     ping:
       warning:
         rta: 100
