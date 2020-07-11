@@ -1,7 +1,7 @@
 class gernox_icinga2::common::object::applies::apt {
   ::icinga2::object::service { 'apt':
     apply                => true,
-    import               => [ 'daily-service' ],
+    import               => [ 'hourly-service' ],
     check_command        => 'apt',
     command_endpoint     => 'host.vars.remote_client',
     assign               => [

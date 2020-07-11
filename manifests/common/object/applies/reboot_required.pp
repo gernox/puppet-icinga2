@@ -1,7 +1,7 @@
 class gernox_icinga2::common::object::applies::reboot_required {
   ::icinga2::object::service { 'reboot_required':
     apply                => true,
-    import               => [ 'daily-service' ],
+    import               => [ 'hourly-service' ],
     check_command        => 'reboot_required',
     command_endpoint     => 'host.vars.remote_client',
     assign               => [
