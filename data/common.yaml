@@ -42,6 +42,7 @@ gernox_icinga2::vars:
         - tmpfs
         - nsfs
         - tracefs
+        - squashfs
 gernox_icinga2::parent_zone: ~
 gernox_icinga2::enable_email: false
 gernox_icinga2::enable_slack: false
