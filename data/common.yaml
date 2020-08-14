@@ -28,6 +28,9 @@ gernox_icinga2::vars:
       critical:
         rta: 200
         pl: 15
+    procs:
+      warning: 200
+      critical: 300
     disk:
       wfree: '20%'
       cfree: '10%'
